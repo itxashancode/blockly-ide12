@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5" />
+    <meta name="theme-color" content="#1E1E1E" />
+    
+    <!-- Primary Meta Tags -->
+    <title>BlocklyIDE - Hand-Coded Multilanguage Blockly IDE</title>
+    <meta name="title" content="BlocklyIDE - Hand-Coded Multilanguage Blockly IDE">
+    <meta name="description" content="A hand-coded, blocky-style IDE with bidirectional conversion between visual blocks and code. Supports JavaScript, Python, PHP, Lua, and Dart.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blockly-ide.web.app/">
+    <meta property="og:title" content="BlocklyIDE - Hand-Coded Multilanguage Blockly IDE">
+    <meta property="og:description" content="A hand-coded, blocky-style IDE with bidirectional conversion between visual blocks and code. Supports JavaScript, Python, PHP, Lua, and Dart.">
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://blockly-ide.web.app/">
+    <meta property="twitter:title" content="BlocklyIDE - Hand-Coded Multilanguage Blockly IDE">
+    <meta property="twitter:description" content="A hand-coded, blocky-style IDE with bidirectional conversion between visual blocks and code. Supports JavaScript, Python, PHP, Lua, and Dart.">
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.png">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Blockly CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/blockly@10.4.3/blockly.min.css">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" as="style" href="%PUBLIC_URL%/static/css/main.css">
+    
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <!-- Inline critical CSS for above-the-fold content -->
+    <style>
+        /* Critical CSS for initial render */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Fira Code', 'Consolas', monospace;
+            background-color: #1E1E1E;
+            color: #9CDCFE;
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        #root {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Loading animation */
+        .app-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #1E1E1E;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .loading-blocks {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .loading-block {
+            width: 40px;
+            height: 40px;
+            background: #007ACC;
+            animation: loading-bounce 1.4s infinite ease-in-out;
+        }
+        
+        .loading-block:nth-child(2) {
+            animation-delay: -0.16s;
+            background: #C586C0;
+        }
+        
+        .loading-block:nth-child(3) {
+            animation-delay: -0.32s;
+            background: #9CDCFE;
+        }
+        
+        @keyframes loading-bounce {
+            0%, 80%, 100% { 
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% { 
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        .loading-text {
+            color: #9CDCFE;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* Hide loading screen when app is loaded */
+        #app:not(.loading) .app-loading {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading screen (removed by React after initial render) -->
+    <div class="app-loading">
+        <div class="loading-blocks">
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+        </div>
+        <div class="loading-text">BLOCKLY<span style="color: #C586C0;">IDE</span></div>
+    </div>
+    
+    <!-- React mount point -->
+    <div id="root"></div>
+    
+    <!-- NoScript content for accessibility -->
+    <noscript>
+        <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #1E1E1E;
+            color: #9CDCFE;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            z-index: 10000;
+        ">
+            <div style="max-width: 600px; margin-bottom: 30px;">
+                <h1 style="color: #C586C0; margin-bottom: 20px; font-size: 2.5em;">
+                    BLOCKLY<span style="color: #007ACC;">IDE</span>
+                </h1>
+                <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px;">
+                    JavaScript is required to run this interactive IDE. Please enable JavaScript to continue.
+                </p>
+                <p style="color: #CE9178; font-size: 0.9em;">
+                    This is a modern web application built with React, Blockly, and Firebase that requires JavaScript to function properly.
+                </p>
+            </div>
+            <div style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+                margin-top: 30px;
+            ">
+                <div style="
+                    background: #007ACC;
+                    color: white;
+                    padding: 12px 24px;
+                    border: 4px solid #1E1E1E;
+                    font-weight: bold;
+                    cursor: not-allowed;
+                    opacity: 0.7;
+                ">
+                    Launch IDE (requires JS)
+                </div>
+                <a href="https://github.com/google/blockly" style="
+                    background: #C586C0;
+                    color: white;
+                    padding: 12px 24px;
+                    border: 4px solid #1E1E1E;
+                    font-weight: bold;
+                    text-decoration: none;
+                    display: inline-block;
+                " target="_blank" rel="noopener noreferrer">
+                    Blockly Documentation
+                </a>
+            </div>
+        </div>
+    </noscript>
+    
+    <!-- Performance monitoring script (optional) -->
+    <script>
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                // Remove loading screen after 2 seconds max
+                const loadingScreen = document.querySelector('.app-loading');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 2000);
+        });
+        
+        // PWA installation prompt (optional)
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            
+            // Show install button (you can implement this in React)
+            console.log('PWA installation available');
+            
+            // Optionally, send to React via global event
+            window.dispatchEvent(new CustomEvent('pwa-install-available', { 
+                detail: { prompt: e } 
+            }));
+        });
+        
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

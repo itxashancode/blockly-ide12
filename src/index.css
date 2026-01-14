@@ -1,0 +1,452 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Fira Code font */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+/* Reset and base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+  background-color: #1E1E1E;
+  color: #9CDCFE;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #252526;
+  border: 2px solid #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007ACC;
+  border: 2px solid #1E1E1E;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C586C0;
+}
+
+::-webkit-scrollbar-corner {
+  background: #1E1E1E;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(0, 122, 204, 0.5);
+  color: #FFFFFF;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* Blockly overrides */
+.blocklyMainBackground {
+  fill: #1E1E1E !important;
+  stroke: #007ACC !important;
+  stroke-width: 2px !important;
+}
+
+.blocklyToolboxDiv {
+  background-color: #252526 !important;
+  border-right: 4px solid #1E1E1E !important;
+}
+
+.blocklyFlyoutBackground {
+  fill: #252526 !important;
+}
+
+.blocklyScrollbarHandle {
+  fill: #C586C0 !important;
+}
+
+.blocklyText {
+  fill: #9CDCFE !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+/* CodeMirror overrides */
+.cm-editor {
+  height: 100%;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 14px;
+}
+
+.cm-gutters {
+  background-color: #1E1E1E !important;
+  border-right: 2px solid #007ACC !important;
+  color: #9CDCFE !important;
+}
+
+.cm-activeLine {
+  background-color: rgba(0, 122, 204, 0.1) !important;
+}
+
+.cm-selectionBackground {
+  background-color: rgba(156, 220, 254, 0.3) !important;
+}
+
+/* Custom utility classes */
+@layer components {
+  .hand-coded-border {
+    border: 4px solid #1E1E1E;
+    position: relative;
+  }
+  
+  .hand-coded-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid #007ACC;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .blocky-element {
+    border: 4px solid #1E1E1E;
+    background-color: #252526;
+    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+  }
+  
+  .blocky-element:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .blocky-element:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .neon-text {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  
+  .neon-border {
+    box-shadow: 
+      inset 0 0 5px currentColor,
+      0 0 10px currentColor;
+    border: 2px solid currentColor;
+  }
+  
+  .code-highlight {
+    background: linear-gradient(90deg, 
+      rgba(197, 134, 192, 0.1) 0%, 
+      rgba(156, 220, 254, 0.1) 100%);
+    border-left: 4px solid #C586C0;
+    padding-left: 1rem;
+  }
+  
+  .grid-overlay {
+    background-image: 
+      linear-gradient(rgba(0, 122, 204, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 122, 204, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .pixel-grid {
+    background-image: 
+      linear-gradient(#252526 1px, transparent 1px),
+      linear-gradient(90deg, #252526 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .button-3d {
+    position: relative;
+    border: 4px solid #1E1E1E;
+    background-color: #007ACC;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  
+  .button-3d::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    background-color: #1E1E1E;
+    z-index: -1;
+    transition: all 0.1s ease;
+  }
+  
+  .button-3d:hover {
+    transform: translate(2px, 2px);
+  }
+  
+  .button-3d:hover::before {
+    top: 2px;
+    left: 2px;
+    right: -2px;
+    bottom: -2px;
+  }
+  
+  .button-3d:active {
+    transform: translate(4px, 4px);
+  }
+  
+  .button-3d:active::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .draggable-block {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-drag: element;
+  }
+  
+  .draggable-block:active {
+    cursor: grabbing;
+  }
+  
+  .snap-grid {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(0, 122, 204, 0.2) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  .console-output {
+    background-color: #1E1E1E;
+    border-left: 4px solid #007ACC;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .variable-watch {
+    background-color: #252526;
+    border: 2px solid #C586C0;
+    border-left-width: 6px;
+    padding: 8px 12px;
+    margin: 4px 0;
+  }
+  
+  .error-highlight {
+    background-color: rgba(206, 145, 120, 0.2);
+    border: 2px solid #CE9178;
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  .execution-line {
+    background-color: rgba(0, 122, 204, 0.3);
+    border-right: 3px solid #9CDCFE;
+  }
+  
+  .loading-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .typing-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background-color: currentColor;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+}
+
+/* Animation keyframes */
+@keyframes loading-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes code-flow {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes block-connect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+  
+  .mobile-full {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-center {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .tablet-stack {
+    flex-direction: column !important;
+  }
+  
+  .tablet-full {
+    width: 100% !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  body {
+    background-color: black !important;
+    color: white !important;
+  }
+  
+  .blocky-element {
+    border-color: white !important;
+  }
+}
+
+/* Dark mode overrides (we're already dark, but just in case) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 3px solid #007ACC;
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+/* Remove default button styles */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Fix for React overlays */
+.ReactModal__Overlay {
+  background-color: rgba(30, 30, 30, 0.9) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Fix for tooltips */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #252526;
+  color: #9CDCFE;
+  border: 2px solid #007ACC;
+  padding: 4px 8px;
+  border-radius: 0;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-4px);
+}

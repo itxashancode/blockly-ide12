@@ -1,0 +1,44 @@
+{
+  "short_name": "BlocklyIDE",
+  "name": "BlocklyIDE - Multilanguage Blockly IDE",
+  "description": "Hand-coded style IDE with bidirectional code ↔ blocks conversion",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1E1E1E",
+  "background_color": "#1E1E1E",
+  "orientation": "any",
+  "categories": ["development", "education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "New JavaScript Project",
+      "short_name": "JS",
+      "description": "Start a new JavaScript project",
+      "url": "/ide?lang=javascript",
+      "icons": [{ "src": "/js-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "New Python Project",
+      "short_name": "Python",
+      "description": "Start a new Python project",
+      "url": "/ide?lang=python",
+      "icons": [{ "src": "/python-icon.png", "sizes": "96x96" }]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "name": "blockly-ide",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.0.0",
+    "@codemirror/lang-php": "^6.0.0",
+    "@codemirror/lang-python": "^6.0.0",
+    "@codemirror/theme-one-dark": "^6.0.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/acorn": "^4.0.6",
+    "@types/esprima": "^4.0.3",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.66",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "@types/react-icons": "^2.2.7",
+    "@types/uuid": "^9.0.7",
+    "@uiw/react-codemirror": "^4.21.21",
+    "acorn": "^8.11.0",
+    "blockly": "^12.3.1",
+    "codemirror": "^6.0.1",
+    "esprima": "^4.0.1",
+    "firebase": "^10.7.2",
+    "js-interpreter": "^6.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.20.1",
+    "typescript": "^4.9.5",
+    "uuid": "^9.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "assert": "^2.1.0",
+    "autoprefixer": "^10.4.23",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.5.6",
+    "process": "^0.11.10",
+    "react-scripts": "^5.0.1",
+    "stream-browserify": "^3.0.0",
+    "tailwindcss": "^3.4.19",
+    "util": "^0.12.5",
+    "vm-browserify": "^1.1.2"
+  }
+}
