@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
               >
                 GitHub
               </BlockyButton>
-              <Link to="/ide">
+              <Link to="https://blockly-ide12.vercel.app/ide">
                 <BlockyButton color="#007ACC" size="sm">
                   🚀 Launch IDE
                 </BlockyButton>
@@ -71,7 +71,7 @@ const HomePage: React.FC = () => {
             <span className="block mt-2 text-lg">Play, learn, and create in multiple programming languages.</span>
           </p>
           
-          <Link to="/ide">
+          <Link to="https://blockly-ide12.vercel.app/ide">
             <BlockyButton color="#007ACC" size="lg" animated>
               🚀 START CODING NOW
             </BlockyButton>
@@ -190,7 +190,7 @@ const HomePage: React.FC = () => {
             >
               📚 Read Blockly Docs
             </BlockyButton>
-            <Link to="/ide" className="w-full sm:w-auto">
+            <Link to="https://blockly-ide12.vercel.app/ide" className="w-full sm:w-auto">
               <BlockyButton color="#007ACC" size="md" animated>
                 🧪 Open Full IDE
               </BlockyButton>
