@@ -1,21 +1,25 @@
 const webpack = require('webpack');
-const path = require('path');
 
 module.exports = {
+  // ✅ Disable ESLint (fixes eslint-loader error on Vercel)
+  eslint: {
+    enable: false,
+  },
+
   webpack: {
     configure: (webpackConfig) => {
       // Add polyfills
       webpackConfig.resolve.fallback = {
-        "vm": require.resolve("vm-browserify"),
-        "path": require.resolve("path-browserify"),
-        "crypto": require.resolve("crypto-browserify"),
-        "stream": require.resolve("stream-browserify"),
-        "buffer": require.resolve("buffer"),
-        "util": require.resolve("util"),
-        "assert": require.resolve("assert"),
-        "fs": false,
-        "os": false,
-        "process": require.resolve("process/browser")
+        vm: require.resolve('vm-browserify'),
+        path: require.resolve('path-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+        buffer: require.resolve('buffer'),
+        util: require.resolve('util'),
+        assert: require.resolve('assert'),
+        fs: false,
+        os: false,
+        process: require.resolve('process/browser'),
       };
 
       // Add plugins
@@ -35,6 +39,6 @@ module.exports = {
       });
 
       return webpackConfig;
-    }
-  }
+    },
+  },
 };
